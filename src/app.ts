@@ -3,11 +3,13 @@ import { feathers } from '@feathersjs/feathers'
 import configuration from '@feathersjs/configuration'
 import { koa, rest, bodyParser, errorHandler, parseAuthentication, cors, serveStatic } from '@feathersjs/koa'
 import socketio from '@feathersjs/socketio'
+import swagger from 'feathers-swagger';
 
 import { configurationValidator } from './configuration'
 import type { Application } from './declarations'
 import { logError } from './hooks/log-error'
 import { sqlite } from './sqlite'
+import { authentication } from './authentication'
 import { services } from './services/index'
 import { channels } from './channels'
 
@@ -33,8 +35,25 @@ app.configure(
   })
 )
 app.configure(sqlite)
+app.configure(authentication)
 app.configure(services)
 app.configure(channels)
+
+// Swagger configuration
+app.configure(swagger({
+  docsPath: '/docs',
+  ui: swagger.swaggerUI({}),
+  openApiVersion: 3,
+  specs: {
+    info: {
+      title: 'Feathers JS Chat Application',
+      description: 'API documentation',
+      version: '1.0.0'
+    },
+    schemes: ['http', 'https']
+  },
+  
+}));
 
 // Register hooks that run on all service methods
 app.hooks({

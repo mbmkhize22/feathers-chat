@@ -49,6 +49,8 @@
     "@feathersjs/adapter-commons": "^5.0.29",
     "@feathersjs/authentication": "^5.0.29",
     "@feathersjs/authentication-client": "^5.0.29",
+    "@feathersjs/authentication-local": "^5.0.29",
+    "@feathersjs/authentication-oauth": "^5.0.29",
     "@feathersjs/configuration": "^5.0.29",
     "@feathersjs/errors": "^5.0.29",
     "@feathersjs/feathers": "^5.0.29",
@@ -58,8 +60,11 @@
     "@feathersjs/socketio": "^5.0.29",
     "@feathersjs/transport-commons": "^5.0.29",
     "@feathersjs/typebox": "^5.0.29",
+    "feathers-swagger": "^3.0.0",
     "knex": "^3.1.0",
+    "koa-mount": "^4.0.0",
     "sqlite3": "^5.1.7",
+    "swagger-ui-dist": "^4.14.2",
     "winston": "^3.13.1"
   },
   "devDependencies": {
